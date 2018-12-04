@@ -1,0 +1,25 @@
+
+;<Bubble Sort>
+START:	LXI H,0000H
+	MOV C,M
+	DCR C
+	MVI D,00H
+LOOP:	INX H
+	MOV A,M
+	MOV B,A
+	INX H
+	MOV A,M
+	CMP B
+	JNC NEXT
+	DCX H
+	MOV M,A
+	INX H
+	MOV M,B
+	MVI D,01H
+NEXT:	DCX H
+	DCR C
+	JNZ LOOP
+	MOV A,D
+	RRC 
+	JC START
+hlt

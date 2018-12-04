@@ -1,0 +1,16 @@
+;<Division of 16-bit by 8-bit>
+; repeated subtraction
+LXI H,0000H
+INX H
+MOV A,M
+MOV B,A ;divisor
+DCX H
+MOV A,M ;divident
+MVI D,00H ;Quotient
+MVI E,00H ;Remainder
+LOOP:	SUB B
+	INR D
+	CMP B
+	JNC LOOP
+MOV E,A
+hlt

@@ -1,0 +1,26 @@
+
+;<Binary to BCD>
+;Data represented in decimal format
+
+LXI H,0000H
+MOV A,M
+MVI E,00H ;QUOTIENT
+MVI B,00H ;REMAINDER
+CPI 64H
+JNC NEXT
+CPI 0AH
+JC RESULT
+LOOP:	SUI 0AH
+	INR E
+	CPI 0AH
+	JNC LOOP
+RESULT: MOV B,A
+	MOV A,E
+	INX H
+	RLC
+	RLC
+	RLC
+	RLC
+	ADD B
+	MOV M,A
+NEXT: hlt

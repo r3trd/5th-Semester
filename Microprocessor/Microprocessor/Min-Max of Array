@@ -1,0 +1,21 @@
+;<Max min of an array>
+LXI H,0000H
+MOV A,M
+MOV C,A ;no of elements
+DCR C
+INX H
+MOV A,M
+MOV B,A ;Largest
+MOV D,A ;Smallest
+LOOP:	INX H
+	MOV A,M
+	CMP B
+	JC NEXT
+	MOV B,A
+	JMP LNEXT
+NEXT:	CMP D
+	JNC LNEXT
+	MOV D,A
+LNEXT:	DCR C
+	JNZ LOOP
+hlt

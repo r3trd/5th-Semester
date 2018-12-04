@@ -1,0 +1,25 @@
+
+;<BCD to Binary>
+;Data represented in decimal form
+
+LXI H,0000H
+MOV A,M
+MOV B,A
+ANI 0FH
+MOV D,A
+MOV A,B
+RRC
+RRC
+RRC
+RRC
+ANI 0FH
+MOV C,A
+MVI B,0AH
+MVI A,00H
+LOOP:	ADD B
+	DCR C
+	JNZ LOOP
+ADD D
+INX H
+MOV M,A
+hlt

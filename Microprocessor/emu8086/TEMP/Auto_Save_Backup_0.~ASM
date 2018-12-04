@@ -1,0 +1,27 @@
+data segment
+num1 dw 2001h
+num2 db 02h
+result dw ?
+data ends
+
+code segment
+assume ds:data, cs:code
+start:
+mov ax, data
+mov ds, ax
+
+mov cx, num1
+mov bl, num2
+
+mov al, cl
+mul bl
+mov dl, al
+
+mov al, ch
+mul bl
+mov dh, al
+
+mov result,dx
+
+code ends
+end start
